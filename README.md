@@ -52,41 +52,48 @@ Designed with simplicity and clarity in mind — covering key pages like **Home*
 - 📸 Screenshots included in `ss/` folder
 - ⚙️ Designed with scalability in mind (modular structure)
 
----
 
 ## 📸 Preview
 
-| Light Mode | Dark Mode |
-|------------|-----------|
-| ![Light](./ss/home-light.png) | ![Dark](./ss/home-dark.png) |
-
-> 📂 See more in the [`ss`](./ss) folder.
-
----
+> 📂 See in the [`ss`](./Current_look) folder.
 
 ## 📂 Folder Structure
 
 healthcare-frontend/
+
 ├── public/
+
 ├── src/
+
 │ ├── app/
+
 │ │ ├── layout.tsx
+
 │ │ ├── page.tsx
+
 │ │ ├── login/page.tsx
+
 │ │ └── signup/page.tsx
+
 │ ├── components/
+
 │ │ └── Navbar.tsx
+
 │ ├── styles/
+
 │ │ ├── Layout.module.scss
+
 │ │ ├── Auth.module.scss
+
 │ │ └── Home.module.scss
+
 ├── ss/
+
 │ ├── home-light.png
+
 │ └── home-dark.png
+
 └── README.md
-
-
----
 
 ## 🚀 Quick Start
 
