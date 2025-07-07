@@ -1,0 +1,227 @@
+/* ==================== ROOT VARIABLES ==================== */
+:root {
+  --nav-bg: #3b82f6;
+  --nav-text: #ffffff;
+  --background: linear-gradient(to bottom right, #ffffff, #e0f2fe);
+  --foreground: #1f2937;
+  --footer-bg: #e5e7eb;
+  --footer-text: #374151;
+  --hover-color: #dbeafe;
+}
+
+/* Fixed dark mode selector using class-based approach */
+.darkMode {
+  --nav-bg: #111827;
+  --nav-text: #f3f4f6;
+  --background: linear-gradient(to bottom right, #0f172a, #1e293b);
+  --foreground: #f3f4f6;
+  --footer-bg: #1f2937;
+  --footer-text: #d1d5db;
+  --hover-color: #4b5563;
+}
+
+/* ================= LAYOUT CONTAINER ================= */
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  
+  /* Apply dark mode when class is present */
+  &.darkMode {
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  width: 100%;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 0.75rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ... rest of your styles remain unchanged ... */
+
+.navContent {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* ===== Brand Logo + Dark Toggle + Hamburger ===== */
+.brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  
+  span {
+    font-weight: 700;
+    color: white;
+  }
+}
+
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.themeToggle,
+.menuToggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.menuToggle {
+  display: none;
+}
+
+/* ================= NAV LINKS ================= */
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: var(--hover-color);
+      
+      &:after {
+        width: 100%;
+      }
+    }
+    
+    &.active {
+      color: var(--hover-color);
+      
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+  
+  .menuToggle {
+    display: block;
+    z-index: 1001;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--nav-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    width: 200px;
+    align-items: flex-end;
+    gap: 1rem;
+    
+    a {
+      padding: 0.5rem 0;
+      width: 100%;
+      text-align: right;
+      
+      &:after {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  .navLinks.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* ================= MAIN CONTENT ================= */
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  margin-top: auto;
+  
+  p {
+    margin: 0;
+  }
+}
